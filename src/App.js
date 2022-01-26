@@ -2,7 +2,6 @@ import './App.css';
 import Generate from './pages/Generate';
 import MyPage from './pages/MyPage';
 import Redirector from './pages/Redirector';
-import Warehouse from './pages/Warehouse';
 import {Routes, Route} from 'react-router-dom'
 
 function App() {

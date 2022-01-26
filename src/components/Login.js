@@ -4,7 +4,7 @@ import {useAuth0} from "@auth0/auth0-react";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function Login({page,pageName}) {
     const navigate = useNavigate()
-    const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
+    const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
     console.log(user)
     if (isAuthenticated) {
         return (
