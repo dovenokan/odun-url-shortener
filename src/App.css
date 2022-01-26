@@ -1,38 +1,103 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('./components/styles/tailwind.css'); 
+
+:root{
+  --dot-color: rgba(51, 51, 51, 0.295);
+}
+
+*{
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+*:focus{
+  outline: none;
+}
+
+body{
+  background-color: rgb(255, 255, 255);
+  /* zoom: 175%; */
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input{
+  margin: 5px 0px 5px 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/**
+ * ==============================================
+ * Login Area
+ * ==============================================
+ */
+
+.loginBox {
+  display: inline-block;
+  margin: 2px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.upcoming-freeze{
+  opacity: 0.1;
+}
+
+/**
+ * ==============================================
+ * Dot Typing
+ * ==============================================
+ */
+ .snippet {
+  position: relative;
+  background: #fff;
+  padding: 3rem 5%;
+  margin: 1.5rem 0;
+  box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
+  border-radius: .25rem;
+}
+
+.stage {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+  margin: 0 -5%;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+ .dot-typing {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--dot-color);
+  color: var(--dot-color);
+  box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
+  animation: dotTyping 1.5s infinite linear;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes dotTyping {
+  0% {
+    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
   }
-  to {
-    transform: rotate(360deg);
+  16.667% {
+    box-shadow: 9984px -10px 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
+  }
+  33.333% {
+    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
+  }
+  50% {
+    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px -10px 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
+  }
+  66.667% {
+    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
+  }
+  83.333% {
+    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px -10px 0 0 var(--dot-color);
+  }
+  100% {
+    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
   }
 }
