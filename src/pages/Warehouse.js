@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-loop-func */
 import {useEffect} from 'react';
 import Localbase from 'localbase'
