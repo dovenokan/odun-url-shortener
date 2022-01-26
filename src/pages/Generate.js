@@ -5,14 +5,14 @@
 import { useState,useEffect,useRef } from 'react';
 import supabase from '../config/supaconfig'
 import {useNavigate} from 'react-router-dom'
-// import Login from '../components/Login';
+import Login from '../components/Login';
 import Header from '../components/Header';
 import QRCode from 'qrcode.react';
 import {copyText} from '../components/Functions';
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function Generate() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-  const his = useNavigate()
+  const navigate = useNavigate()
   let firebase_collection_name = "urls"
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   let customInput = useRef()
@@ -92,7 +92,7 @@ function Generate() {
         <section className="bg-white mt-20">
           <div className="max-w-2xl px-6 text-center mx-auto">
             <Header />
-            {/* <Login page={"mypage"} pageName={"MyPage"}  /> */}
+            <Login page={"mypage"} pageName={"MyPage"}  />
             <div className="grid flex items-end justify-center mt-8">
               <div className="bg-gray-300 px-1 py-1 text-gray-500"> <input ref={urlInput} className="bg-gray-200 text-gray-600 px-1 py-1 w-full" onChange={(event)=>setUrl(event.target.value)} type="text" placeholder="Url" /></div>
               <div className="bg-gray-300 px-1 py-1 mt-4 text-gray-500">odun.ga/ <input ref={customInput} className="bg-gray-200 text-gray-600 px-1 py-1" onChange={(event)=>setCustom(event.target.value.toLowerCase())}  type="text" placeholder="Custom (optional)" /></div>

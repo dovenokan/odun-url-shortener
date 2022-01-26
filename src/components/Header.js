@@ -1,11 +1,11 @@
 import {useNavigate} from 'react-router-dom'
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function Header() {
-    const his = useNavigate()
+    const navigate = useNavigate()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     return (
         <>
-            <img onClick={()=>his.navigate("/")} className="w-20 mx-auto" src={require("./img/odun.png")} alt="odun" />
+            <img onClick={()=>navigate("/")} className="w-20 mx-auto" src={require("./img/odun.png")} alt="odun" />
             <h1 className="text-3xl font-medium text-gray-500">
               ODUN URL SHORTENER
             </h1>

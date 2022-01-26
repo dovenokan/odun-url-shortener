@@ -6,7 +6,7 @@
 /* eslint-disable no-unused-vars */
 import { useState,useEffect } from 'react';
 import supabase from '../config/supaconfig'
-import {useHistory, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import Header from '../components/Header';
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function Redirector() {
@@ -54,7 +54,6 @@ function Redirector() {
       setTimeout(() => {Window_Redirect("/")}, 999);
     }
     else{
-      alert("_okkkk")
       Window_Redirect(data.url)
      }
     return
@@ -74,7 +73,7 @@ function Redirector() {
                 <Header />
                 <div className="ErrorInfo mt-5">
                   <h2 className="text-4xl font-medium text-gray-900 mx-auto mt-2">
-                      404
+                    404
                   </h2>
                   <h2 className="text-base font-medium text-gray-500 mx-auto mt-2">
                     SORRY, WE COULDN'T FIND
@@ -92,7 +91,7 @@ function Redirector() {
     }
 
   return(
-    <main className="font-sans bg-white">
+    <main className="font-sans bg-gray-900">
     </main>
   )
 }
