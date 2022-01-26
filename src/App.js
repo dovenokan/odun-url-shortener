@@ -10,7 +10,6 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Generate />} />
-        <Route exact path="/warehouse" element={<Warehouse />} />
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/:custom" element={<Redirector />} />
       </ Routes>
