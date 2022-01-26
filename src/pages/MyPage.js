@@ -10,34 +10,34 @@ import {useNavigate} from 'react-router-dom'
 import Login from '../components/Login';
 import Table from '../components/Table';
 import Header from '../components/Header';
+import {useAuth0} from "@auth0/auth0-react";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function MyPage() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   const navigate = useNavigate()
-////////////////////////////////////////////////////////////////////////////////////////////////////
-  const [updatableData, setUpdatableData] = useState({})
+  const { user } = useAuth0();
   const [myurls, setMyUrls] = useState([])
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//   async function readURLS() {
-//     let data = await db.collection(default_collection).get()
-//     let out = data.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-//     let warehouse = out[0]["warehouse"]
-//     let items = Object.values(warehouse)
-//     let urls = items.filter((url) => {
-//       return url.owner === localStorage.getItem("gmail")
-//     })
-//     let sorted = urls.sort(function(a,b){
-//       return a.visit > b.visit
-//     })
-//     setUpdatableData(warehouse)
-//     setMyUrls(sorted)
-//   }
+  async function readURLS() {
+    let { data, error } = await supabase
+    .from("odun")
+    .select("*")
+
+    let customs = Object.values(data).filter((c)=>{
+      return c.owner === user.email
+    })
+    console.log(customs)
+
+    let sorted = customs.sort(function(a,b){
+      return a.custom > b.custom
+    })
+    setMyUrls(sorted)
+  }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   async function updateItem(e) {
     let short = e.target.parentElement.parentElement.parentElement.getElementsByClassName("custom")[0].innerText
     let newUrl = prompt(`Type Your New Url for: "${short}" `)||"_"
     if (newUrl.includes("http")) {
-      updatableData[short].url = newUrl
       e.target.parentElement.parentElement.parentElement.getElementsByClassName("url")[0].firstElementChild.firstElementChild.href = newUrl
       const { data, error } = await supabase
       .from('odun')
@@ -61,7 +61,7 @@ function MyPage() {
   }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   useEffect(() => {
-    // readURLS()
+    readURLS()
   }, [])
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   return (

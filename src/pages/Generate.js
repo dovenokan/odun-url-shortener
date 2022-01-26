@@ -3,17 +3,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
 import { useState,useEffect,useRef } from 'react';
-import supabase from '../config/supaconfig'
 import {useNavigate} from 'react-router-dom'
+import QRCode from 'qrcode.react';
+import supabase from '../config/supaconfig'
 import Login from '../components/Login';
 import Header from '../components/Header';
-import QRCode from 'qrcode.react';
 import {copyText} from '../components/Functions';
+import {useAuth0} from "@auth0/auth0-react";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function Generate() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   const navigate = useNavigate()
-  let firebase_collection_name = "urls"
+  const { user } = useAuth0();
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   let customInput = useRef()
   let urlInput = useRef()
@@ -21,7 +22,6 @@ function Generate() {
   const [url, setUrl] = useState("")
   const [custom, setCustom] = useState( Math.random().toString(36).substring(2,7) )
   const [generated, setGenerated] = useState("")
-  const [ip, setIp] = useState("")
   const [deletion, setDeletion] = useState(false)
   const [expiration, setExpiration] = useState(null)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +67,7 @@ function Generate() {
           custom: custom || randcustom,
           url: url,
           ts: Date.now(),
-          owner: localStorage.getItem("permission")==="1" ? localStorage.getItem("gmail") : "anonymous",
+          owner: user.email || "anonymous",
           visit: 0,
           deletion: deletion,
           expiration: expiration
@@ -116,5 +116,4 @@ function Generate() {
     </>
   );
 }
-
 export default Generate;
