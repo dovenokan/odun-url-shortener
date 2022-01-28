@@ -11,7 +11,7 @@ function App() {
         <Route exact path="/" element={<Generate />} />
         <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/:custom" element={<Redirector />} />
-      </ Routes>
+      </Routes>
     </>
   );
 }

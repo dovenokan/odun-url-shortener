@@ -8,9 +8,7 @@ let db = new Localbase('db')
 function Warehouse() {
     useEffect(() => {
       db.collection('newo').get().then(users => {
-        console.log(users)
         for (const dere of Object.values(users[0])) {
-            console.log(dere)
             async function fetcher() {
                 const { data, error } = await supabase
                 .from('odun')
@@ -27,7 +25,6 @@ function Warehouse() {
                 ])
             }
             // fetcher()
-            console.log(dere.custom)
         }
       })
     }, []);
