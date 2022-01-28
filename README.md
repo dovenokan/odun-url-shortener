@@ -1,2 +1,2 @@
 ## ODUN URL SHORTENER
-ODUN, Minimialist URL-Shortener App
+ODUN, Minimalist URL-Shortener App
