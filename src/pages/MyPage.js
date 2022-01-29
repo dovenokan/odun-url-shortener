@@ -21,10 +21,9 @@ function MyPage() {
   async function readURLS() {
     let { data, error } = await supabase
     .from("odun")
-    .select("*")
-    let customs = Object.values(data).filter((c)=>{
-      return c.owner === user.email
-    })
+    .select("custom, owner, visit, custom, url")
+    .match({owner: user.email})
+    let customs = Object.values(data)
     let sorted = customs.sort(function(a,b){
       return a.custom > b.custom
     })

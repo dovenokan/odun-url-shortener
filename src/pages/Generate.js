@@ -67,7 +67,7 @@ function Generate() {
           custom: custom || randcustom,
           url: url,
           ts: Date.now(),
-          owner: user.email || "anonymous",
+          owner: user ? user.email : "anonymous",
           visit: 0,
           deletion: deletion,
           expiration: expiration
