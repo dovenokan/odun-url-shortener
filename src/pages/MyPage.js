@@ -19,9 +19,9 @@ function MyPage() {
   const [myurls, setMyUrls] = useState([])
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   async function readURLS() {
-    let { data, error } = await supabase
+    const { data, error } = await supabase
     .from("odun")
-    .select("custom, owner, visit, custom, url")
+    .select("custom, owner, visit, custom, url, ts")
     .match({owner: user.email})
     let customs = Object.values(data)
     let sorted = customs.sort(function(a,b){
@@ -30,11 +30,12 @@ function MyPage() {
     setMyUrls(sorted)
   }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-  async function updateItem(e) {
-    let short = e.target.parentElement.parentElement.parentElement.getElementsByClassName("custom")[0].innerText
+  async function updateItem(e,item) {
+    let html = e.target.parentElement.parentElement.parentElement.getElementsByClassName("url")[0].firstElementChild.firstElementChild
+    let short = item.custom
     let newUrl = prompt(`Type Your New Url for: "${short}" `)||"_"
     if (newUrl.includes("http")) {
-      e.target.parentElement.parentElement.parentElement.getElementsByClassName("url")[0].firstElementChild.firstElementChild.href = newUrl
+      html.href = newUrl
       const { data, error } = await supabase
       .from('odun')
       .update({url: newUrl})
@@ -43,15 +44,16 @@ function MyPage() {
     return 0
   }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-  async function deleteItem(e) {
-    let item = e.target.parentElement.parentElement.parentElement
-    let short = e.target.parentElement.parentElement.parentElement.getElementsByClassName("custom")[0].innerText
+  async function deleteItem(e,item) {
+    console.log(e,item)
+    let html = e.target.parentElement.parentElement.parentElement
+    let short = item.custom
     if (confirm()) {
-      item.remove()
+      html.remove()
       const { data, error } = await supabase
       .from('odun')
       .delete()
-      .match({ custom: short })
+      .match({custom: short})
     }
     return 0
   }
@@ -67,7 +69,7 @@ function MyPage() {
           <div className="max-w-2xl px-6 text-center mx-auto">
             <Header />
             <Login page={""} pageName={"Home"}  />
-            <Table del={(e)=>deleteItem(e)} update={(e)=> updateItem(e)} data={myurls} />
+            <Table del={deleteItem} update={updateItem} data={myurls} />
           </div>
         </section>
       </main>
