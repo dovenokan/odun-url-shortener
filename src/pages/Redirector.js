@@ -87,11 +87,9 @@ function Redirector() {
         </main>
         </>
       )
-    }
-
+  }
   return(
-    <main className="font-sans bg-gray-900">
-    </main>
+    <></>
   )
 }
 export default Redirector;
