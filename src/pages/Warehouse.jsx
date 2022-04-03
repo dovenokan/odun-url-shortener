@@ -3,7 +3,7 @@
 import {useEffect} from 'react';
 import Localbase from 'localbase'
 import supabase from '../config/supaconfig'
-let db = new Localbase('db')
+const db = new Localbase('db')
 
 function Warehouse() {
     useEffect(() => {

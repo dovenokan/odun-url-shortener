@@ -23,17 +23,17 @@ function MyPage() {
     .from("odun")
     .select("custom, owner, visit, custom, url, ts")
     .match({owner: user.email})
-    let customs = Object.values(data)
-    let sorted = customs.sort(function(a,b){
+    const customs = Object.values(data)
+    const sorted = customs.sort(function(a,b){
       return a.custom > b.custom
     })
     setMyUrls(sorted)
   }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   async function updateItem(e,item) {
-    let html = e.target.parentElement.parentElement.parentElement.getElementsByClassName("url")[0].firstElementChild.firstElementChild
-    let short = item.custom
-    let newUrl = prompt(`Type Your New Url for: "${short}" `)||"_"
+    const html = e.target.parentElement.parentElement.parentElement.getElementsByClassName("url")[0].firstElementChild.firstElementChild
+    const short = item.custom
+    const newUrl = prompt(`Type Your New Url for: "${short}" `)||"_"
     if (newUrl.includes("http")) {
       html.href = newUrl
       const { data, error } = await supabase
@@ -46,8 +46,8 @@ function MyPage() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   async function deleteItem(e,item) {
     console.log(e,item)
-    let html = e.target.parentElement.parentElement.parentElement
-    let short = item.custom
+    const html = e.target.parentElement.parentElement.parentElement
+    const short = item.custom
     if (confirm()) {
       html.remove()
       const { data, error } = await supabase

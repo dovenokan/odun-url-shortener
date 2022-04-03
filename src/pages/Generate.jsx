@@ -45,7 +45,7 @@ function Generate() {
     const { data, error } = await supabase
     .from('odun')
     .select("custom")
-    let customs = Object.values(data).map((c)=>{
+    const customs = Object.values(data).map((c)=>{
       return c.custom
     })
     
@@ -55,7 +55,7 @@ function Generate() {
     else if ( !url.includes("http") ) {
       alert("Url must include \"http\".")
     }
-    else if ( custom.length!==0 && (custom.length < 3 || custom.length > 21) ) {
+    else if ( custom.length!==0 && (custom.length < 3 || custom.length > 20) ) {
       alert("Custom name length must be between 3 and 20.")
     }
     else{
@@ -84,7 +84,7 @@ function Generate() {
     return () => {
       setCustom(Math.random().toString(36).substring(2,7))
     }
-  }, [])
+  }, [user])
 ////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <>

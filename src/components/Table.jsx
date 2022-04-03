@@ -2,10 +2,21 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/alt-text */
-import {memo} from 'react'
+import {memo, useEffect, useState} from 'react'
 import {copyText} from './Functions'
+import Loading from './Loading';
 
 function Table({data,update,del}) {
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        if (data) {
+            setTimeout(() => {
+                setLoading(false)
+            }, 500);
+            return 0
+        }
+    }, [data])
+    
     return (
         <>
             <div className="overflow-x-auto">
@@ -23,7 +34,10 @@ function Table({data,update,del}) {
                             </tr>
                         </thead>
                         <tbody className="text-gray-600 text-sm font-light">
-                            {data.map((v) => {
+                            {loading ? 
+                                <Loading/> 
+                            : 
+                            data.map((v) => {
                                 return(
                                     <tr key={v.ts} className="border-b border-gray-200 hover:bg-gray-100">
                                         <td className="custom text-center py-3 px-6 text-center whitespace-nowrap">

@@ -42,60 +42,34 @@ input{
 
 /**
  * ==============================================
- * Dot Typing
+ * Loading Animation
  * ==============================================
  */
- .snippet {
-  position: relative;
-  background: #fff;
-  padding: 3rem 5%;
-  margin: 1.5rem 0;
-  box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
-  border-radius: .25rem;
+
+ div.loading{
+   position: relative;
+   left: 14.75rem;
+   display: flex;
+   justify-content: center;
+ }
+div.loading span{
+  height: 8px;
+  width: 8px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: rgb(59, 59, 59);
+  transition: width 0.5s ease-in-out;
+  animation:  dance .5s infinite;
 }
 
-.stage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 2rem 0;
-  margin: 0 -5%;
-  overflow: hidden;
-}
-
- .dot-typing {
-  position: relative;
-  left: -9999px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: var(--dot-color);
-  color: var(--dot-color);
-  box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
-  animation: dotTyping 1.5s infinite linear;
-}
-
-@keyframes dotTyping {
+@keyframes dance {
   0% {
-    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
-  }
-  16.667% {
-    box-shadow: 9984px -10px 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
-  }
-  33.333% {
-    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
-  }
-  50% {
-    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px -10px 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
-  }
-  66.667% {
-    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
-  }
-  83.333% {
-    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px -10px 0 0 var(--dot-color);
+    opacity: 100%;
   }
   100% {
-    box-shadow: 9984px 0 0 0 var(--dot-color), 9999px 0 0 0 var(--dot-color), 10014px 0 0 0 var(--dot-color);
+    opacity: 50%;
   }
 }
+
+
+ 
