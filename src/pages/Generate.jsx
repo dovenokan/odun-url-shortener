@@ -96,15 +96,15 @@ function Generate() {
             <div className="grid flex items-end justify-center mt-8">
               <div className="bg-gray-300 px-1 py-1 text-gray-500"> <input ref={urlInput} className="bg-gray-200 text-gray-600 px-1 py-1 w-full" onChange={(event)=>setUrl(event.target.value)} type="text" placeholder="Url" /></div>
               <div className="bg-gray-300 px-1 py-1 mt-4 text-gray-500">odun.ga/ <input ref={customInput} className="bg-gray-200 text-gray-600 px-1 py-1" onChange={(event)=>setCustom(event.target.value.toLowerCase())}  type="text" placeholder="Custom (optional)" /></div>
-              <div className="bg-gray-300 px-1 py-1 mt-4 text-gray-500">
+              <div className="mt-3">
+                <span className="text-gray-500 text-xs border-b border-gray-600">Pick Expiration Date</span>
+                <input onChange={(e)=>setExpiration(new Date(e.target.value).valueOf())} name="expiration" type="datetime-local" className="bg-gray-300 text-gray-500 sm:text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full pl-1 py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pick Expiration Date" />
+              </div>
+              <div className="bg-gray-300 px-1 py-1 mt-3 text-gray-500">
                 <label className="inline-flex items-center my-1">
                   <span className="mr-6 text-gray-500">Delete After Redirection</span>
                   <input onClick={()=>setDeletion(!deletion)} type="checkbox" className="ml-8 form-checkbox h-5 w-4 text-gray-500"/>
                 </label> 
-              </div>
-              <div className="mt-3">
-                <span className="text-gray-500 text-xs border-b border-gray-600">Pick Expiration Date</span>
-                <input onChange={(e)=>setExpiration(new Date(e.target.value).valueOf())} name="expiration" type="datetime-local" className="bg-gray-300 text-gray-500 sm:text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full pl-1 py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pick Expiration Date" />
               </div>
               <button className="cursor-pointer bg-gray-300 text-gray-500 mt-3 px-1 py-1 hover:bg-gray-400 hover:text-gray-600 active:text-gray-700 active:bg-gray-500" onClick={()=>shortener()}>Shorten</button>
             </div>
