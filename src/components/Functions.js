@@ -1,4 +1,3 @@
-
 function copyText(text) {
     var textToCopy = text;
     var myTemporaryInputElement = document.createElement("input");

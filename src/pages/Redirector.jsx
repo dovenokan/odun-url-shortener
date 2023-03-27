@@ -36,6 +36,7 @@ function Redirector() {
     .from('odun')
     .select(`*`)
     .eq("custom", custom)
+    .limit(1)
     data = data[0]
     if (!data) {
       setErrorPage(true)
